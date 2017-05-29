@@ -10,6 +10,7 @@ import { RecipeComponent } from './component/page/recipe/recipe.component';
 import { HelloComponent } from './component/page/hello/hello.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: '', component: HelloComponent },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     RecipeComponent,
     HelloComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavbarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
