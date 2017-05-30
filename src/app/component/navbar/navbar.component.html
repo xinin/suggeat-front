@@ -8,14 +8,14 @@
       <ul class="nav navbar-nav">
         <li><a routerLink="/recipe">Recipe</a></li>
         <li><a routerLink="/123">Not Found</a></li>
-        <li class="login" *ngIf="isIn"><a>Login</a></li>
-        <li class="register" *ngIf="isIn"><a>Register</a></li>
+        <li class="login" *ngIf="isIn"><a routerLink="/login">Login</a></li>
+        <li class="register" *ngIf="isIn"><a routerLink="/register">Register</a></li>
       </ul>
       <button class="btn btn-default pull-right ml5" *ngIf="!isIn">
-        <p>Login</p>
+        <p routerLink="/login">Login</p>
       </button>
       <button class="btn btn-danger pull-right" *ngIf="!isIn">
-        <p>Register</p>
+        <p routerLink="/register">Register</p>
       </button>
     </div>
   </div>

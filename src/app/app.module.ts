@@ -5,24 +5,21 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {PageNotFoundComponent} from './component/page/page-not-found/page-not-found.component';
-import { RecipeComponent } from './component/page/recipe/recipe.component';
-import { HelloComponent } from './component/page/hello/hello.component';
+import { HelloComponent } from './page/hello/hello.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { LoginPageComponent } from './page/login-page/login-page.component';
+import { RegisterPageComponent } from './page/register-page/register-page.component';
+import { NotFoundPageComponent } from './page/not-found-page/not-found-page.component';
+import { RecipePageComponent } from './page/recipe-page/recipe-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: HelloComponent },
-  { path: 'recipe', component: RecipeComponent },
-
-  // {
-  //  path: 'heroes',
-  //  component: HeroListComponent,
-  //  data: { title: 'Heroes List' }
-  // },
-  // { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'recipe', component: RecipePageComponent },
+  { path: 'login' , component: LoginPageComponent},
+  { path: 'register' , component: RegisterPageComponent},
+  { path: '**', component: NotFoundPageComponent }
 ];
 
 @NgModule({
@@ -34,12 +31,14 @@ const appRoutes: Routes = [
   ],
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    RecipeComponent,
     HelloComponent,
     FooterComponent,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    NotFoundPageComponent,
+    RecipePageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

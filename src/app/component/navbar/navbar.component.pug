@@ -16,10 +16,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         li
           a(routerLink='/123') Not Found
         li.login(*ngIf='isIn')
-          a Login
+          a(routerLink='/login') Login
         li.register(*ngIf='isIn')
-          a Register
+          a(routerLink='/register') Register
       button.btn.btn-default.pull-right.ml5(*ngIf='!isIn')
-        p Login
+        p(routerLink='/login') Login
       button.btn.btn-danger.pull-right(*ngIf='!isIn')
-        p Register
+        p(routerLink='/register') Register
