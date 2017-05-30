@@ -12,6 +12,27 @@ button.btn
   line-height: 35px
   display: inline-block
 
-button.btn.btn-success
-  background: $primary-color
+button.btn.btn-default
+  background: $tertiary-color
   color: $secondary-color
+  border-color: $tertiary-color-border
+  &:hover
+    background-color: $tertiary-color-hover
+    border-color: $tertiary-color-hover-border
+
+button.btn.btn-danger
+  background: $red
+  color: $secondary-color
+  &:hover
+    background-color: $red-hover
+
+$columns: 100
+@for $i from 1 through $columns
+  .mt#{$i}
+    margin-top: #{$i}px
+  .mb#{$i}
+    margin-bottom: #{$i}px
+  .mr#{$i}
+    margin-right: #{$i}px
+  .ml#{$i}
+    margin-left: #{$i}px

@@ -6,10 +6,20 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') Suggeat
+      a.navbar-brand(routerLink="")
+        | Suggeat
+        i.fa.fa-cutlery.ml5(aria-hidden='true')
     .collapse.navbar-collapse([ngClass]="{ 'in': isIn }")
       ul.nav.navbar-nav
         li
-          a(href='/recipe') Recipe
+          a(routerLink="/recipe") Recipe
         li
-          a(href='/123') Not Found
+          a(routerLink='/123') Not Found
+        li.login(*ngIf='isIn')
+          a Login
+        li.register(*ngIf='isIn')
+          a Register
+      button.btn.btn-default.pull-right.ml5(*ngIf='!isIn')
+        p Login
+      button.btn.btn-danger.pull-right(*ngIf='!isIn')
+        p Register
