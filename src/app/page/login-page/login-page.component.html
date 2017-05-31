@@ -1,2 +1,19 @@
 
-<p>login-page works!</p>
+<div class="container">
+  <div class="title">Welcome</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="input-field col s12">
+        <input class="validate" id="email" [(ngModel)]="user.email" type="email"/>
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input class="validate" id="password" [(ngModel)]="user.password" type="password"/>
+        <label for="password">Password</label>
+      </div>
+    </div><span>{{errorMsg}}</span>
+    <button class="btn waves-effect waves-light" (click)="login()" type="submit" name="action">Login</button>
+  </div>
+</div>

@@ -1,1 +1,14 @@
-p login-page works!
+.container
+  .title
+    | Welcome
+  .panel-body
+    .row
+      .input-field.col.s12
+        input#email.validate([(ngModel)]='user.email', type='email')
+        label(for='email') Email
+    .row
+      .input-field.col.s12
+        input#password.validate([(ngModel)]='user.password', type='password')
+        label(for='password') Password
+    span {{errorMsg}}
+    button.btn.waves-effect.waves-light((click)='login()', type='submit', name='action') Login
