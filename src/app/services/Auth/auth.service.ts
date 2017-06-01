@@ -15,12 +15,15 @@ export class AuthService {
   constructor(private _router: Router, private Utils: UtilsService) {
   }
 
-  logout() {
+  logout(redirect?: string): void {
     this.Utils.removeCookie('user');
-    this._router.navigate(['login']);
+    if (!redirect) {
+      redirect = '';
+    }
+    this._router.navigate([redirect]);
   }
 
-  login(user: User, redirect?: string) {
+  login(user: User, redirect?: string): void {
     const authenticatedUser: any = this.users.find(u => u.email === user.email);
     if (authenticatedUser && authenticatedUser.password === user.password) {
       this.Utils.putCookie('user', 'userValue');
@@ -28,15 +31,20 @@ export class AuthService {
         redirect = 'profile';
       }
       this._router.navigate([redirect]);
-      return true;
     }
-    return false;
-
   }
 
-  checkCredentials() {
+  checkCredentials(): void {
     if (!this.Utils.getCookie('user')) {
       this._router.navigate(['login']);
+    }
+  }
+
+  isAuth(): boolean {
+    if (this.Utils.getCookie('user')) {
+      return true;
+    } else {
+      return false;
     }
   }
 

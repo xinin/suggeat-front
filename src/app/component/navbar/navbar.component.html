@@ -2,21 +2,27 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button class="navbar-toggle collapsed" type="button" (click)="toggleState()"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" routerLink="">Suggeat<i class="fa fa-cutlery ml5" aria-hidden="true"></i></a>
+      <button class="navbar-toggle collapsed mr25" type="button" (click)="toggleState()"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" routerLink="">Suggeat<i class="fa fa-cutlery ml5" aria-hidden="true"></i></a>
     </div>
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }">
       <ul class="nav navbar-nav">
         <li><a routerLink="/recipe">Recipe</a></li>
         <li><a routerLink="/123">Not Found</a></li>
-        <li class="login" *ngIf="isIn"><a routerLink="/login">Login</a></li>
-        <li class="register" *ngIf="isIn"><a routerLink="/register">Register</a></li>
+        <li *ngIf="this.Auth.isAuth()"><a routerLink="/profile">Profile</a></li>
+        <li class="login" *ngIf="isIn &amp;&amp; !this.Auth.isAuth()"><a routerLink="/login">Login</a></li>
+        <li class="register" *ngIf="isIn &amp;&amp; !this.Auth.isAuth()"><a routerLink="/register">Register</a></li>
+        <li class="register" *ngIf="isIn &amp;&amp; this.Auth.isAuth()"><a (click)="this.Auth.logout()">Logout</a></li>
       </ul>
-      <button class="btn btn-default pull-right ml5" *ngIf="!isIn">
+      <button class="btn btn-default pull-right ml5" *ngIf="!isIn &amp;&amp; !this.Auth.isAuth()">
         <p routerLink="/login">Login</p>
       </button>
-      <button class="btn btn-danger pull-right" *ngIf="!isIn">
+      <button class="btn btn-danger pull-right" *ngIf="!isIn &amp;&amp; !this.Auth.isAuth()">
         <p routerLink="/register">Register</p>
       </button>
+      <button class="btn btn-default pull-right ml5" *ngIf="!isIn &amp;&amp; this.Auth.isAuth()" (click)="this.Auth.logout()">
+        <p>Logout</p>
+      </button>
+      <p>LOGADO: {{this.Auth.isAuth()}}</p>
     </div>
   </div>
 </nav>

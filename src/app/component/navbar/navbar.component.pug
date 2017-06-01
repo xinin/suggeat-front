@@ -1,7 +1,7 @@
 nav.navbar.navbar-inverse.navbar-fixed-top
   .container-fluid
     .navbar-header
-      button.navbar-toggle.collapsed(type='button', (click)="toggleState()")
+      button.navbar-toggle.collapsed.mr25(type='button', (click)="toggleState()")
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
@@ -15,11 +15,18 @@ nav.navbar.navbar-inverse.navbar-fixed-top
           a(routerLink="/recipe") Recipe
         li
           a(routerLink='/123') Not Found
-        li.login(*ngIf='isIn')
+        li(*ngIf='this.Auth.isAuth()')
+          a(routerLink='/profile') Profile
+        li.login(*ngIf='isIn && !this.Auth.isAuth()')
           a(routerLink='/login') Login
-        li.register(*ngIf='isIn')
+        li.register(*ngIf='isIn && !this.Auth.isAuth()')
           a(routerLink='/register') Register
-      button.btn.btn-default.pull-right.ml5(*ngIf='!isIn')
+        li.register(*ngIf='isIn && this.Auth.isAuth()')
+          a((click)="this.Auth.logout()") Logout
+      button.btn.btn-default.pull-right.ml5(*ngIf='!isIn && !this.Auth.isAuth()')
         p(routerLink='/login') Login
-      button.btn.btn-danger.pull-right(*ngIf='!isIn')
+      button.btn.btn-danger.pull-right(*ngIf='!isIn && !this.Auth.isAuth()')
         p(routerLink='/register') Register
+      button.btn.btn-default.pull-right.ml5(*ngIf='!isIn && this.Auth.isAuth()', (click)="this.Auth.logout()")
+        p Logout
+      p LOGADO: {{this.Auth.isAuth()}}
