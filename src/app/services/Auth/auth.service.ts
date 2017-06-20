@@ -2,17 +2,14 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../../class/user';
 import {UtilsService} from '../Utils/utils.service';
-
+import {ApiService} from '../Api/api.service';
 
 @Injectable()
 export class AuthService {
 
-  users: User[] = [
-    new User('diego.prieto@beeva.com', '123'),
-    new User('user1@gmail.com', 'a23')
-  ];
 
-  constructor(private _router: Router, private Utils: UtilsService) {
+
+  constructor(private _router: Router, private Utils: UtilsService, private Api: ApiService) {
   }
 
   logout(redirect?: string): void {
@@ -23,15 +20,21 @@ export class AuthService {
     this._router.navigate([redirect]);
   }
 
-  login(user: User, redirect?: string): void {
-    const authenticatedUser: any = this.users.find(u => u.email === user.email);
-    if (authenticatedUser && authenticatedUser.password === user.password) {
-      this.Utils.putCookie('user', 'userValue');
-      if (!redirect) {
-        redirect = 'profile';
+  login(user: User, redirect?: string): any {
+    this.Api.request('/user/login', {user: user.serialize()}, {method: this.Api.POST}).then(
+      res => {
+        console.log('LOGIN', res);
+        this.Utils.putCookie('user', 'userValue');
+        if (!redirect) {
+          redirect = 'profile';
+        }
+        this._router.navigate([redirect]);
+      },
+      err => {
+        console.log(err);
+        return err;
       }
-      this._router.navigate([redirect]);
-    }
+    );
   }
 
   checkCredentials(): void {

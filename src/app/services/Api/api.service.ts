@@ -77,6 +77,11 @@ export class ApiService {
       .catch(this.handleErrorPromise);
   }
 
+  private delete(uri: string, options: any): Promise<any> {
+    return this.http.delete(uri, options).toPromise()
+      .catch(this.handleErrorPromise);
+  }
+
   private handleErrorPromise(error: Response | any) {
     console.error(error.message || error);
     return Promise.reject(error.message || error);

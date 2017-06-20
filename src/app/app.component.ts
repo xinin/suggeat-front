@@ -20,27 +20,27 @@ export class AppComponent implements OnInit {
   }
 
   doSomething(): void {
-    console.log(this.Config.values);
-    console.log(this.Utils.b64Encode(this.Config.values.description));
-    console.log(this.Utils.b64Decode(this.Utils.b64Encode(this.Config.values.description)));
+    // console.log(this.Config.values);
+    // console.log(this.Utils.b64Encode(this.Config.values.description));
+    // console.log(this.Utils.b64Decode(this.Utils.b64Encode(this.Config.values.description)));
 
-    this.Api.request('/user/prueba').then(
-      res => {
-        console.log('GET', res);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-
-    this.Api.request('/user/prueba', {test: 'value'}, {method: this.Api.POST}).then(
-      res => {
-        console.log('POST', res);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    // this.Api.request('/user/prueba').then(
+    //  res => {
+    //    console.log('GET', res);
+    //  },
+    //  err => {
+    //    console.log(err);
+    //  }
+    // );
+    //
+    // this.Api.request('/user/prueba', {test: 'value'}, {method: this.Api.POST}).then(
+    //  res => {
+    //    console.log('POST', res);
+    //  },
+    //  err => {
+    //    console.log(err);
+    //  }
+    // );
 
     // this.Api.request('/user/prueba', {test: 'value' }, {method: 'PUT'}).then(
     //  res => {

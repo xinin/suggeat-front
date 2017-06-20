@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     RecipePageComponent,
     UserProfilePageComponent
   ],
-  providers: [UtilsService, AuthService, ConfigService, ApiService],
+  providers: [UtilsService, AuthService, ConfigService, ApiService], // Si esta aqui no hace falta en providers de componentes
   bootstrap: [AppComponent]
 })
 export class AppModule {
